@@ -5,6 +5,72 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+const siteUrl = 'https://www.chris-magicien.fr';
+const ogImage = `${siteUrl}/images/gala.jpg`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "Chris — Magicien de la Belle Époque",
+      description,
+      inLanguage: "fr-FR",
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": `${siteUrl}/#business`,
+      name: "Chris Magicien de la Belle Époque",
+      description: "Magicien professionnel à Rennes en Bretagne. Prestations de magie close up, cocktail, salon et scène pour particuliers et entreprises.",
+      url: siteUrl,
+      image: ogImage,
+      telephone: "",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Rennes",
+        addressRegion: "Bretagne",
+        addressCountry: "FR",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 48.1173,
+        longitude: -1.6778,
+      },
+      areaServed: [
+        { "@type": "State", name: "Bretagne" },
+        { "@type": "State", name: "Pays de la Loire" },
+        { "@type": "Country", name: "France" },
+      ],
+      priceRange: "$$",
+      knowsAbout: ["Magie close up", "Magie de salon", "Spectacle de scène", "Magie cocktail", "Mentalisme"],
+    },
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#person`,
+      name: "Chris",
+      jobTitle: "Magicien professionnel",
+      description: "Artiste illusionniste de la Belle Époque, personnage à la croisée des chemins entre Arsène Lupin et Sherlock Holmes.",
+      url: siteUrl,
+      image: `${siteUrl}/images/portrait.jpg`,
+      sameAs: [
+        "https://www.youtube.com/channel/UCfKq0dSfAmkiqf4l8yVmr0A",
+      ],
+      award: "Prix du Public — Festival des Stars de la Magie et des Étoiles du Cirque 2020",
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/#webpage`,
+      url: siteUrl,
+      name: title,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      about: { "@id": `${siteUrl}/#person` },
+      description,
+      inLanguage: "fr-FR",
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -12,20 +78,48 @@ const { title, description } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="magicien, rennes, magicien rennes, magicien bretagne, magie rennes, magie, Bretagne, spectacle, belle époque, close up, mariage, anniversaire, CE, magie événementiel, festival, Ille et vilaine" />
+    <meta name="keywords" content="magicien rennes, magicien bretagne, magie close up rennes, magicien mariage rennes, magicien événementiel bretagne, spectacle magie belle époque, magicien professionnel ille et vilaine, close up magie, magicien animation entreprise, magicien cocktail" />
+    <link rel="canonical" href={siteUrl} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Chris — Magicien de la Belle Époque" />
+    <meta name="geo.region" content="FR-35" />
+    <meta name="geo.placename" content="Rennes" />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/images/prestations/closeup.jpg" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="683" />
+    <meta property="og:image:alt" content="Chris Magicien de la Belle Époque en prestation" />
     <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Chris — Magicien de la Belle Époque" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Chris Magicien de la Belle Époque en prestation" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
-    <title>{title}</title>
   </head>
   <body>
     <slot />

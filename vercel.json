@@ -1,0 +1,11 @@
+{
+  "redirects": [
+    {
+      "source": "/:path(.*)",
+      "has": [{ "type": "host", "value": "chris-magicien.fr" }],
+      "destination": "https://www.chris-magicien.fr/:path",
+      "permanent": true
+    }
+  ],
+  "trailingSlash": false
+}

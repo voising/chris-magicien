@@ -1,0 +1,159 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="magicien, rennes, magicien rennes, magicien bretagne, magie rennes, magie, Bretagne, spectacle, belle époque, close up, mariage, anniversaire, CE, magie événementiel, festival, Ille et vilaine" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/images/prestations/closeup.jpg" />
+    <meta property="og:locale" content="fr_FR" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --color-bg: #0D0A07;
+    --color-bg-alt: #1A1510;
+    --color-bg-section: #13100B;
+    --color-cream: #F5EFE0;
+    --color-cream-soft: #E8DFD0;
+    --color-gold: #C9A84C;
+    --color-gold-light: #E0C872;
+    --color-gold-dark: #8B7331;
+    --color-burgundy: #6B1D2A;
+    --color-burgundy-light: #8B2E3C;
+    --color-text: #D4CBBA;
+    --color-text-light: #F5EFE0;
+    --color-text-muted: #8A7E6E;
+
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Cormorant Garamond', 'Times New Roman', serif;
+    --font-accent: 'Lora', Georgia, serif;
+
+    --max-width: 1200px;
+    --section-padding: 6rem 2rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 18px;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  a {
+    color: var(--color-gold);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: var(--color-gold-light);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--color-cream);
+    font-weight: 400;
+  }
+
+  .section {
+    padding: var(--section-padding);
+    position: relative;
+  }
+
+  .section-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: var(--color-gold);
+  }
+
+  .ornament {
+    display: block;
+    text-align: center;
+    margin: 0 auto 3rem;
+    color: var(--color-gold-dark);
+    font-size: 1.5rem;
+    letter-spacing: 0.5em;
+    opacity: 0.6;
+  }
+
+  .ornament::before {
+    content: '\2014\00a0\2726\00a0\2014';
+  }
+
+  /* Fade-in animation */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+
+    :root {
+      --section-padding: 4rem 1.25rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+    }
+  }
+</style>

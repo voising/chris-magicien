@@ -1,13 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
   <defs>
     <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#E0C872"/>
-      <stop offset="50%" stop-color="#C9A84C"/>
-      <stop offset="100%" stop-color="#8B7331"/>
+      <stop offset="0%" stop-color="#E8D07A"/>
+      <stop offset="100%" stop-color="#C9A84C"/>
     </linearGradient>
   </defs>
-  <circle cx="64" cy="64" r="62" fill="#0D0A07" stroke="url(#g)" stroke-width="3"/>
-  <text x="64" y="82" text-anchor="middle" font-family="Georgia, serif" font-size="72" font-weight="400" font-style="italic" fill="url(#g)">C</text>
-  <line x1="30" y1="96" x2="98" y2="96" stroke="url(#g)" stroke-width="1.5" opacity="0.5"/>
-  <path d="M56 20 L64 8 L72 20" fill="none" stroke="url(#g)" stroke-width="1.5" opacity="0.4"/>
+  <circle cx="64" cy="64" r="62" fill="#0D0A07" stroke="#C9A84C" stroke-width="3"/>
+  <!-- Hat crown -->
+  <path d="M40,70 L40,32 Q40,28 44,28 L84,28 Q88,28 88,32 L88,70 Z" fill="#C9A84C"/>
+  <!-- Hat band -->
+  <rect x="40" y="56" width="48" height="7" fill="#0D0A07" opacity="0.35"/>
+  <!-- Brim -->
+  <ellipse cx="64" cy="72" rx="38" ry="8" fill="#C9A84C"/>
+  <!-- Crown overlap on brim -->
+  <rect x="40" y="66" width="48" height="6" fill="#C9A84C"/>
+  <!-- Brim highlight -->
+  <ellipse cx="64" cy="70" rx="36" ry="5" fill="#E0C872" opacity="0.3"/>
+  <!-- Sparkles -->
+  <circle cx="98" cy="30" r="2.5" fill="#E0C872"/>
+  <circle cx="104" cy="44" r="1.5" fill="#E0C872" opacity="0.7"/>
+  <circle cx="93" cy="20" r="1.2" fill="#E0C872" opacity="0.5"/>
 </svg>
